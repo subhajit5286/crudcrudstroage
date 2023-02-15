@@ -4,7 +4,7 @@ var i=0;
 // Form submit event
 form.addEventListener('submit', saveItem);
 // Delete event
-//itemList.addEventListener('click', removeItem);
+itemList.addEventListener('click', removeItem);
 //edit event
 //itemList.addEventListener('click', editItem);
 
@@ -92,20 +92,25 @@ window.addEventListener("DOMContentLoaded",()=>{
   })
 })
 // Remove item
-/*function removeItem(e){
+function removeItem(e){
     if(e.target.classList.contains('delete')){
       if(confirm('Are You Sure?')){
         var li = e.target.parentElement;
         var idz=li.id;
         console.log(idz)
         itemList.removeChild(li);
-        let f1 = window.localStorage.getItem(idz);
-        window.localStorage.removeItem(idz)
-        //console.log(JSON.parse(f1));
+        axios.delete('https://crudcrud.com/api/0020e60e03ea48d8aa688b62ce3ac17c/addPostrequest/'+idz)
+        .then((res)=>{
+            console.log(res)
+          })
+        .catch((err)=>{
+             console.log(err)
+        })
+
       }
     }
   }
-  function editItem(e){
+  /*function editItem(e){
     if(e.target.classList.contains('warning')){
       
         var li = e.target.parentElement;
