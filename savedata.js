@@ -6,7 +6,7 @@ form.addEventListener('submit', saveItem);
 // Delete event
 itemList.addEventListener('click', removeItem);
 //edit event
-//itemList.addEventListener('click', editItem);
+itemList.addEventListener('click', editItem);
 
 function saveItem(e){
     e.preventDefault();
@@ -110,7 +110,7 @@ function removeItem(e){
       }
     }
   }
-  /*function editItem(e){
+  function editItem(e){
     if(e.target.classList.contains('warning')){
       
         var li = e.target.parentElement;
@@ -121,9 +121,13 @@ function removeItem(e){
         document.getElementById('name').value=name1.firstChild.textContent;
         document.getElementById('email').value=name1.firstChild.nextSibling.nextSibling.textContent;
         itemList.removeChild(li);
-        let f1 = window.localStorage.getItem(idz);
-        window.localStorage.removeItem(idz)
-        //console.log(JSON.parse(f1));
+        axios.delete('https://crudcrud.com/api/0020e60e03ea48d8aa688b62ce3ac17c/addPostrequest/'+idz)
+        .then((res)=>{
+            console.log(res)
+          })
+        .catch((err)=>{
+             console.log(err)
+        })
       
     }
-  } */
+  } 
